@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Artist I Am Becoming | Mark Zymeth C. Flores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== COLOR CONTROLS ===== */
+  :root{
+    --bg:#0a0a0a;
+    --panel:#111111;
+    --line:#2a1214;
+    --red:#e11d2e;
+    --red-bright:#ff4655;
+    --text:#f2f2f2;
+    --muted:#a8a8a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',Arial,sans-serif;font-size:17px;line-height:1.7;}
+  img{max-width:100%;height:auto;display:block;}
+  a{color:var(--red-bright);}
+  a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px;}
+
+  .skip{position:absolute;left:-999px;top:0;background:#fff;color:#000;padding:10px;z-index:200;}
+  .skip:focus{left:10px;}
+
+  .wrap{max-width:1150px;margin:0 auto;padding:0 24px;}
+  .label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--red-bright);font-weight:600;}
+  .num{font-family:'Anton',sans-serif;color:var(--red);font-size:2rem;line-height:1;}
+  .script{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--text);}
+
+  /* ===== TOP NAV ===== */
+  header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,10,10,.95);z-index:100;}
+  header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding-top:14px;padding-bottom:14px;}
+  .brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1px;}
+  nav{display:flex;flex-wrap:wrap;gap:6px 20px;}
+  nav a{color:var(--text);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;}
+  nav a:hover{color:var(--red-bright);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;overflow:hidden;padding:30px 0 70px;border-bottom:1px solid var(--line);}
+  .giant{
+    font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.9;
+    font-size:clamp(4rem,19vw,17rem);letter-spacing:-2px;text-align:center;
+    background:linear-gradient(180deg,#e11d2e 15%,#4a070c 75%,rgba(10,10,10,0) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    user-select:none;
+  }
+  .hero-body{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;margin-top:-4.5vw;position:relative;align-items:end;}
+  .hero-body h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;
+    font-size:clamp(2.6rem,8vw,5.5rem);line-height:.95;margin:4px 0 14px;}
+  .role{color:var(--red-bright);letter-spacing:2px;text-transform:uppercase;font-size:14px;font-weight:600;margin-bottom:14px;}
+  .intro{color:var(--muted);max-width:520px;}
+  .stats{border-left:1px solid var(--line);padding-left:30px;}
+  .stat{display:flex;align-items:center;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);}
+  .stat:last-child{border-bottom:none;}
+  .stat .num{font-size:2.6rem;min-width:70px;}
+  .stat span{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+
+  /* ===== TABLE OF CONTENTS ===== */
+  .toc{padding:50px 0;border-bottom:1px solid var(--line);}
+  .toc ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px;}
+  .toc a{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--text);
+    border:1px solid var(--line);padding:16px;border-radius:6px;background:var(--panel);}
+  .toc a:hover{border-color:var(--red);}
+
+  /* ===== SECTIONS ===== */
+  section.block{padding:80px 0;border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:center;gap:24px;margin-bottom:12px;}
+  .sec-head h2{font-size:1.5rem;letter-spacing:1px;text-transform:uppercase;font-weight:600;white-space:nowrap;}
+  .sec-head .rule{flex:1;height:1px;background:var(--line);}
+  .lead{color:var(--muted);max-width:760px;margin-bottom:34px;}
+
+  /* ===== PART I CARDS ===== */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;}
+  .card .thumb{aspect-ratio:16/10;background:linear-gradient(135deg,#1a0a0c,#0f0f0f);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  .card .thumb img{width:100%;height:100%;object-fit:cover;}
+  .card .row{display:flex;gap:14px;align-items:flex-start;margin-top:14px;}
+  .card h3{font-size:.95rem;letter-spacing:1px;text-transform:uppercase;font-weight:600;line-height:1.3;}
+  .card .meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+  .tag{display:inline-block;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;
+    border:1px solid var(--red);color:var(--red-bright);padding:1px 9px;border-radius:20px;margin-top:6px;}
+  .card .cap{font-size:15px;color:var(--muted);margin-top:8px;}
+
+  /* ===== PART II WORKS ===== */
+  .work{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;margin-bottom:60px;padding-bottom:60px;border-bottom:1px solid var(--line);}
+  .work:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .work:nth-child(even) .media{order:2;}
+  .media .thumb{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#150a0b;aspect-ratio:4/3;}
+  .media img{width:100%;height:100%;object-fit:cover;}
+  .video{position:relative;padding-bottom:56.25%;height:0;border-radius:6px;overflow:hidden;}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .video.short{padding-bottom:0;height:auto;aspect-ratio:9/16;max-width:340px;margin:0 auto;background:#000;}
+  .work h3{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:2rem;line-height:1.1;margin:6px 0 10px;}
+  .work p{color:var(--muted);margin-bottom:12px;}
+  .btn{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--red);color:var(--text);
+    text-decoration:none;padding:9px 20px;border-radius:30px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;}
+  .btn:hover{background:var(--red);}
+
+  /* ===== REFLECTION ===== */
+  .reflect{display:grid;grid-template-columns:2fr 1fr;border:1px solid var(--line);}
+  .reflect .text{padding:44px;background:var(--panel);}
+  .reflect .text p{margin-bottom:18px;color:#dcdcdc;max-width:680px;}
+  .reflect .quote{background:linear-gradient(160deg,#9b0f1c,#3a060b);padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;}
+  .reflect .mark{font-family:'Anton',sans-serif;font-size:4rem;color:var(--red-bright);line-height:.6;}
+  .reflect .quote p{font-size:1.3rem;line-height:1.4;}
+
+  /* ===== APPENDICES ===== */
+  .appx{margin-bottom:46px;}
+  .appx h3{font-size:1.1rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .appx h3 span{color:var(--red-bright);}
+  .proof{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin:16px 0;}
+  .proof figure{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel);}
+  .proof img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+  .proof figcaption{font-size:13px;color:var(--muted);padding:8px 10px;}
+  .links li{margin-left:20px;}
+
+  /* ===== FOOTER ===== */
+  footer{padding:60px 0;}
+  footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  footer h2{font-family:'Anton',sans-serif;font-weight:400;font-size:2.4rem;text-transform:uppercase;line-height:1.1;}
+  footer p{color:var(--muted);}
+  footer .credits{font-size:14px;}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:800px){
+    .hero-body,.work,.reflect,footer .wrap{grid-template-columns:1fr;}
+    .work:nth-child(even) .media{order:0;}
+    .stats{border-left:none;padding-left:0;}
+    .hero-body{margin-top:0;}
+    .reflect .text,.reflect .quote{padding:26px;}
+    .sec-head h2{white-space:normal;}
+  }
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ============ TOP NAV ============ -->
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="label">Mark Zymeth C. Flores</span>
+      <small>GEARTS · Art Appreciation · Final Portfolio</small>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#top">Home</a>
+      <a href="#part1">Part I</a>
+      <a href="#part2">Part II</a>
+      <a href="#reflection">Reflection</a>
+      <a href="#appendices">Appendices</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ FRONT MATTER: TITLE + INTRO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h2 class="giant" aria-hidden="true">Portfolio</h2>
+
+    <div class="hero-body">
+      <div>
+        <p class="script">Hello, I'm</p>
+        <h1>Mark Zymeth<br>Flores</h1>
+        <p class="role">The Artist I Am Becoming</p>
+        <p class="intro">
+          [Write 2 to 3 sentences about yourself and what this portfolio shows.]
+        </p>
+      </div>
+
+      <div class="stats">
+        <p class="label" style="margin-bottom:6px;">Who am I becoming?</p>
+        <div class="stat"><div class="num">06</div><span>GEARTS outputs<br>in Part I</span></div>
+        <div class="stat"><div class="num">03</div><span>New artistic<br>explorations</span></div>
+        <div class="stat"><div class="num">1</div><span>Final<br>reflection</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE OF CONTENTS ============ -->
+<section class="toc" aria-labelledby="toc-title">
+  <div class="wrap">
+    <h2 class="label" id="toc-title">Table of Contents</h2>
+    <ol>
+      <li><a href="#part1"><span class="num">01</span> Part I<br>My Art Appreciation Journey</a></li>
+      <li><a href="#part2"><span class="num">02</span> Part II<br>My Artistic Exploration</a></li>
+      <li><a href="#reflection"><span class="num">03</span> Final Reflection<br>Who Am I Becoming?</a></li>
+      <li><a href="#appendices"><span class="num">04</span> Appendices<br>Proof of Process</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PART I ============ -->
+<section class="block" id="part1">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Part I | My Art Appreciation Journey</h2><div class="rule"></div>
+    </div>
+    <p class="lead">
+      [Write 1 to 2 sentences about the outputs you made in GEARTS this semester.]
+    </p>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="thumb">
+          <img src="images/AIArtAppreciation.jpg" alt="AI art appreciation output" onerror="this.style.display='none'">
+        </div>
+        <div class="row">
+          <span class="num">01</span>
+          <div>
+            <h3>AI Art Appreciation</h3>
+            <p class="meta">[Medium]</p>
+            <span class="tag">Individual</span>
+            <p class="cap">AI disclosure: [Explain how AI was used in this output.]</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="images/BlackOutPoetry.jpg" alt="Blackout poetry output" onerror="this.style.display='none'">
+        </div>
+        <div class="row">
+          <span class="num">02</span>
+          <div>
+            <h3>Blackout Poetry</h3>
+            <p class="meta">Blackout poetry</p>
+            <span class="tag">Individual</span>
+            <p class="cap">[One-line caption.]</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="images/BookSpinePoetry.jpg" alt="Book spine poetry output" onerror="this.style.display='none'">
+        </div>
+        <div class="row">
+          <span class="num">03</span>
+          <div>
+            <h3>Book Spine Poetry</h3>
+            <p class="meta">Book spine poetry</p>
+            <span class="tag">Individual</span>
+            <p class="cap">[One-line caption.]</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="images/CoffeePainting.jpg" alt="Coffee painting output" onerror="this.style.display='none'">
+        </div>
+        <div class="row">
+          <span class="num">04</span>
+          <div>
+            <h3>Coffee Painting</h3>
+            <p class="meta">Coffee painting</p>
+            <span class="tag">Individual</span>
+            <p class="cap">[One-line caption.]</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="images/Painting.jpg" alt="Painting output" onerror="this.style.display='none'">
+        </div>
+        <div class="row">
+          <span class="num">05</span>
+          <div>
+            <h3>[Painting Title]</h3>
+            <p class="meta">[Medium]</p>
+            <span class="tag">Individual</span>
+            <p class="cap">[One-line caption.]</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="images/ScribbleArt.jpg" alt="Scribble art output" onerror="this.style.display='none'">
+        </div>
+        <div class="row">
+          <span class="num">06</span>
+          <div>
+            <h3>Scribble Art</h3>
+            <p class="meta">Scribble art</p>
+            <span class="tag">Individual</span>
+            <p class="cap">[One-line caption.]</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART II ============ -->
+<section class="block" id="part2">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Part II | My Artistic Exploration</h2><div class="rule"></div>
+    </div>
+    <p class="lead">
+      [Write 1 to 2 sentences about why you chose drawing, dancing, and photography.]
+    </p>
+
+    <!-- Work 01: Drawing -->
+    <article class="work">
+      <div class="media">
+        <div class="thumb">
+          <img src="images/Drawing.jpg" alt="Drawing artwork" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div>
+        <span class="num">01</span>
+        <h3>[Drawing Title]</h3>
+        <span class="tag">New exploration</span>
+        <p class="meta" style="margin-top:10px;">[Medium] · Individual · [Month Year]</p>
+        <p>[Describe the drawing and what it means to you.]</p>
+        <a class="btn" href="#appendix-1">View proof in Appendix 1 →</a>
+      </div>
+    </article>
+
+    <!-- Work 02: Dancing (video) -->
+    <article class="work">
+      <div class="media">
+      <div class="video short">
+        <iframe src="https://www.youtube.com/embed/hfaBSIkUuPY"
+          title="Dance video"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+        <span class="num">02</span>
+        <h3>[Dance Title]</h3>
+        <span class="tag">New exploration</span>
+        <p class="meta" style="margin-top:10px;">Dance · Individual · [Month Year]</p>
+        <p>[Describe the dance and what it means to you.]</p>
+        <a class="btn" href="#appendix-2">View proof in Appendix 2 →</a>
+      </div>
+    </article>
+
+    <!-- Work 03: Photography -->
+    <article class="work">
+      <div class="media">
+        <div class="thumb">
+          <img src="images/Photography.jpg" alt="Photography work" onerror="this.style.display='none'">
+        </div>
+      </div>
+      <div>
+        <span class="num">03</span>
+        <h3>[Photography Title]</h3>
+        <span class="tag">New exploration</span>
+        <p class="meta" style="margin-top:10px;">Photography · Individual · [Month Year]</p>
+        <p>[Describe the photo and what it means to you.]</p>
+        <a class="btn" href="#appendix-3">View proof in Appendix 3 →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ FINAL REFLECTION ============ -->
+<section class="block" id="reflection">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Final Reflection | Looking Forward</h2><div class="rule"></div>
+    </div>
+    <p class="lead">Who am I becoming?</p>
+
+    <div class="reflect">
+      <div class="text">
+        <p>[Reflection paragraph 1]</p>
+        <p>[Reflection paragraph 2]</p>
+        <p>[Reflection paragraph 3]</p>
+      </div>
+      <div class="quote">
+        <div class="mark">“</div>
+        <p>[One sentence from your reflection.]</p>
+        <span class="script">Mark Zymeth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPENDICES ============ -->
+<section class="block" id="appendices" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Appendices | Proof of Process</h2><div class="rule"></div>
+    </div>
+    <p class="lead">Proof of creation for each Part II work, arranged in the same order as Part II.</p>
+
+    <!-- Appendix 1: Drawing -->
+    <div class="appx" id="appendix-1">
+      <h3><span>Appendix 1</span> · [Drawing Title]</h3>
+      <div class="proof">
+        <figure>
+          <img src="images/DrawingProof.jpg" alt="Drawing process photo" onerror="this.style.display='none'">
+          <figcaption>[Caption] · [Month Day]</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Appendix 2: Dancing -->
+    <div class="appx" id="appendix-2">
+      <h3><span>Appendix 2</span> · [Dance Title]</h3>
+      <ul class="links">
+        <li><a href="https://www.youtube.com/shorts/hfaBSIkUuPY" target="_blank" rel="noopener">Watch the dance video on YouTube</a></li>
+      </ul>
+    </div>
+
+    <!-- Appendix 3: Photography -->
+    <div class="appx" id="appendix-3">
+      <h3><span>Appendix 3</span> · [Photography Title]</h3>
+      <div class="proof">
+        <figure>
+          <img src="images/PhotographyProof.jpg" alt="Photography process photo" onerror="this.style.display='none'">
+          <figcaption>[Caption] · [Month Day]</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER / CREDITS ============ -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h2>Thank you<br>for visiting</h2>
+    </div>
+    <div class="credits">
+      <p class="label" style="margin-bottom:8px;">Credits &amp; Acknowledgments</p>
+      <p>[Thank your group mates, participants, and everyone who gave permission to appear in your work.]</p>
+      <p style="margin-top:14px;">Mark Zymeth C. Flores · [Course and Section]<br>GEARTS · Art Appreciation · Final Requirement</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
