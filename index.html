@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
 <title>The Artist I Am Becoming | Mark Zymeth C. Flores</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +20,24 @@
     --red-bright:#ff4655;
     --text:#f2f2f2;
     --muted:#a8a8a8;
+    color-scheme:dark;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);font-family:'Inter',Arial,sans-serif;font-size:17px;line-height:1.7;}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+    scroll-behavior:smooth;
+    scroll-padding-top:90px;
+  }
+  body{
+    background:var(--bg);color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    font-size:17px;line-height:1.7;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
+  }
   img{max-width:100%;height:auto;display:block;}
   a{color:var(--red-bright);}
   a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px;}
@@ -31,37 +47,45 @@
 
   .wrap{max-width:1150px;margin:0 auto;padding:0 24px;}
   .label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--red-bright);font-weight:600;}
-  .num{font-family:'Anton',sans-serif;color:var(--red);font-size:2rem;line-height:1;}
+  .num{font-family:'Anton',Impact,sans-serif;color:var(--red);font-size:2rem;line-height:1;}
   .script{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--text);}
 
   /* ===== JUSTIFIED PARAGRAPHS ===== */
   .intro,.lead,.card .cap,.work p,.reflect .text p,footer .credits p{
     text-align:justify;
     text-justify:inter-word;
-    hyphens:auto;
     -webkit-hyphens:auto;
+    -ms-hyphens:auto;
+    hyphens:auto;
+    overflow-wrap:break-word;
   }
-  .work p.meta,footer .credits p.label{text-align:left;hyphens:none;}
+  .work p.meta,footer .credits p.label{text-align:left;-webkit-hyphens:none;hyphens:none;}
 
   /* ===== TOP NAV ===== */
-  header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,10,10,.95);z-index:100;}
+  header.top{
+    border-bottom:1px solid var(--line);
+    position:-webkit-sticky;position:sticky;top:0;
+    background:rgba(10,10,10,.95);z-index:100;
+    padding-top:env(safe-area-inset-top);
+  }
   header.top .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 20px;padding-top:14px;padding-bottom:14px;}
   .brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1px;}
   nav{display:flex;flex-wrap:wrap;gap:6px 20px;}
-  nav a{color:var(--text);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;}
+  nav a{color:var(--text);text-decoration:none;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 0;white-space:nowrap;}
   nav a:hover{color:var(--red-bright);}
 
   /* ===== HERO ===== */
   .hero{position:relative;overflow:hidden;padding:30px 0 70px;border-bottom:1px solid var(--line);}
   .giant{
-    font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.9;
+    font-family:'Anton',Impact,sans-serif;text-transform:uppercase;line-height:.9;
     font-size:clamp(4rem,19vw,17rem);letter-spacing:-2px;text-align:center;
     background:linear-gradient(180deg,#e11d2e 15%,#4a070c 75%,rgba(10,10,10,0) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    user-select:none;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;
+    -webkit-user-select:none;user-select:none;
   }
   .hero-body{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;margin-top:-4.5vw;position:relative;align-items:end;}
-  .hero-body h1{font-family:'Anton',sans-serif;text-transform:uppercase;font-weight:400;
+  .hero-body h1{font-family:'Anton',Impact,sans-serif;text-transform:uppercase;font-weight:400;
     font-size:clamp(2.6rem,8vw,5.5rem);line-height:.95;margin:4px 0 14px;}
   .role{color:var(--red-bright);letter-spacing:2px;text-transform:uppercase;font-size:14px;font-weight:600;margin-bottom:14px;}
   .intro{color:var(--muted);max-width:520px;}
@@ -73,9 +97,9 @@
 
   /* ===== TABLE OF CONTENTS ===== */
   .toc{padding:50px 0;border-bottom:1px solid var(--line);}
-  .toc ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px;}
+  .toc ol{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:16px;margin-top:20px;}
   .toc a{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--text);
-    border:1px solid var(--line);padding:16px;border-radius:6px;background:var(--panel);}
+    border:1px solid var(--line);padding:16px;border-radius:6px;background:var(--panel);min-height:44px;}
   .toc a:hover{border-color:var(--red);}
 
   /* ===== SECTIONS ===== */
@@ -86,7 +110,7 @@
   .lead{color:var(--muted);max-width:760px;margin-bottom:34px;}
 
   /* ===== PART I CARDS ===== */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:28px;}
   .card .thumb{aspect-ratio:16/10;background:linear-gradient(135deg,#1a0a0c,#0f0f0f);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
   .card .thumb img{width:100%;height:100%;object-fit:cover;}
   .card .thumb iframe{width:100%;height:100%;border:0;}
@@ -105,11 +129,11 @@
   .media .thumb{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#150a0b;aspect-ratio:4/3;}
   .media img{width:100%;height:100%;object-fit:cover;}
   .video{position:relative;padding-bottom:56.25%;height:0;border-radius:6px;overflow:hidden;}
-  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .video iframe{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;}
   .video.short{padding-bottom:0;height:auto;aspect-ratio:9/16;max-width:340px;margin:0 auto;background:#000;}
-  .work h3{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:2rem;line-height:1.1;margin:6px 0 10px;}
+  .work h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:2rem;line-height:1.1;margin:6px 0 10px;}
   .work p{color:var(--muted);margin-bottom:12px;}
-  .btn{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--red);color:var(--text);
+  .btn{display:inline-flex;gap:10px;align-items:center;min-height:44px;border:1px solid var(--red);color:var(--text);
     text-decoration:none;padding:9px 20px;border-radius:30px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;}
   .btn:hover{background:var(--red);}
 
@@ -118,44 +142,86 @@
   .reflect .text{padding:44px;background:var(--panel);}
   .reflect .text p{margin-bottom:18px;color:#dcdcdc;max-width:680px;}
   .reflect .quote{background:linear-gradient(160deg,#9b0f1c,#3a060b);padding:44px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;}
-  .reflect .mark{font-family:'Anton',sans-serif;font-size:4rem;color:var(--red-bright);line-height:.6;}
+  .reflect .mark{font-family:'Anton',Impact,sans-serif;font-size:4rem;color:var(--red-bright);line-height:.6;}
   .reflect .quote p{font-size:1.3rem;line-height:1.4;}
 
   /* ===== APPENDICES ===== */
   .appx{margin-bottom:46px;}
   .appx h3{font-size:1.1rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
   .appx h3 span{color:var(--red-bright);}
-  .proof{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin:16px 0;}
+  .proof{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(210px,100%),1fr));gap:16px;margin:16px 0;}
   .proof figure{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel);}
   .proof img{width:100%;aspect-ratio:4/3;object-fit:cover;}
   .proof figcaption{font-size:13px;color:var(--muted);padding:8px 10px;}
   .links li{margin-left:20px;}
+  .links a{display:inline-block;padding:6px 0;}
 
   /* ===== FOOTER ===== */
-  footer{padding:60px 0;}
+  footer{padding:60px 0;padding-bottom:calc(60px + env(safe-area-inset-bottom));}
   footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
-  footer h2{font-family:'Anton',sans-serif;font-weight:400;font-size:2.4rem;text-transform:uppercase;line-height:1.1;}
+  footer h2{font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:2.4rem;text-transform:uppercase;line-height:1.1;}
   footer p{color:var(--muted);}
   footer .credits{font-size:14px;}
 
-  /* ===== LIGHTBOX (click to view full image) ===== */
+  /* ===== LIGHTBOX (click or tap to view full image) ===== */
   .card .thumb img,.media .thumb img,.proof img{cursor:zoom-in;}
   img[tabindex]:focus-visible{outline:3px solid #fff;outline-offset:3px;}
-  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:24px;z-index:1000;cursor:zoom-out;}
+  .lightbox{
+    position:fixed;top:0;right:0;bottom:0;left:0;
+    background:rgba(0,0,0,.95);
+    display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;
+    padding:24px;
+    padding-top:calc(24px + env(safe-area-inset-top));
+    padding-bottom:calc(24px + env(safe-area-inset-bottom));
+    z-index:1000;cursor:zoom-out;
+    overscroll-behavior:contain;
+    touch-action:pinch-zoom;
+  }
   .lightbox.open{display:flex;}
-  .lightbox img{max-width:100%;max-height:calc(100vh - 110px);width:auto;height:auto;object-fit:contain;border-radius:6px;cursor:zoom-out;}
+  .lightbox img{
+    max-width:100%;
+    max-height:calc(100vh - 120px);
+    max-height:calc(100dvh - 120px);
+    width:auto;height:auto;object-fit:contain;border-radius:6px;cursor:zoom-out;
+    -webkit-user-select:none;user-select:none;
+  }
   .lightbox .lb-cap{color:var(--muted);font-size:14px;text-align:center;max-width:700px;}
-  .lightbox .lb-close{position:absolute;top:14px;right:18px;background:transparent;border:1px solid var(--red);color:var(--text);width:44px;height:44px;border-radius:50%;font-size:24px;line-height:1;cursor:pointer;}
+  .lightbox .lb-close{
+    position:absolute;top:calc(14px + env(safe-area-inset-top));right:18px;
+    background:rgba(0,0,0,.6);border:1px solid var(--red);color:var(--text);
+    width:46px;height:46px;border-radius:50%;font-size:26px;line-height:1;cursor:pointer;
+  }
   .lightbox .lb-close:hover{background:var(--red);}
+
+  /* ===== TABLET ===== */
+  @media(max-width:1000px){
+    section.block{padding:64px 0;}
+  }
 
   /* ===== MOBILE ===== */
   @media(max-width:800px){
+    body{font-size:16px;}
+    .wrap{padding:0 18px;}
     .hero-body,.work,.reflect,footer .wrap{grid-template-columns:1fr;}
     .work:nth-child(even) .media{order:0;}
     .stats{border-left:none;padding-left:0;}
     .hero-body{margin-top:0;}
     .reflect .text,.reflect .quote{padding:26px;}
-    .sec-head h2{white-space:normal;}
+    .sec-head h2{white-space:normal;font-size:1.2rem;}
+    .work h3{font-size:1.6rem;}
+    .script{font-size:2rem;}
+    section.block{padding:52px 0;}
+    html{scroll-padding-top:120px;}
+    .intro,.lead,.card .cap,.work p,.reflect .text p,footer .credits p{text-align:left;}
+
+    /* nav scrolls sideways on phones so the header stays short */
+    header.top .wrap{flex-direction:column;align-items:flex-start;gap:2px;padding-top:10px;padding-bottom:6px;}
+    nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%;gap:22px;scrollbar-width:none;}
+    nav::-webkit-scrollbar{display:none;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
   }
 </style>
 </head>
@@ -236,7 +302,7 @@
 
       <article class="card">
         <div class="thumb">
-          <img src="images/AIArtAppreciation.jpg" alt="AI art appreciation output" onerror="this.style.display='none'">
+          <img src="images/AIArtAppreciation.jpg" alt="AI art appreciation output" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
         <div class="row">
           <span class="num">01</span>
@@ -251,7 +317,7 @@
 
       <article class="card">
         <div class="thumb">
-          <img src="images/BlackOutPoetry.jpg" alt="Blackout poetry output" onerror="this.style.display='none'">
+          <img src="images/BlackOutPoetry.jpg" alt="Blackout poetry output" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
         <div class="row">
           <span class="num">02</span>
@@ -266,7 +332,7 @@
 
       <article class="card">
         <div class="thumb">
-          <img src="images/BookSpinePoetry.jpg" alt="Book spine poetry output" onerror="this.style.display='none'">
+          <img src="images/BookSpinePoetry.jpg" alt="Book spine poetry output" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
         <div class="row">
           <span class="num">03</span>
@@ -281,7 +347,7 @@
 
       <article class="card">
         <div class="thumb">
-          <img src="images/CoffeePainting.jpg" alt="Coffee painting output" onerror="this.style.display='none'">
+          <img src="images/CoffeePainting.jpg" alt="Coffee painting output" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
         <div class="row">
           <span class="num">04</span>
@@ -296,7 +362,7 @@
 
       <article class="card">
         <div class="thumb">
-          <img src="images/Painting.jpg" alt="Painting output" onerror="this.style.display='none'">
+          <img src="images/Painting.jpg" alt="Painting output" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
         <div class="row">
           <span class="num">05</span>
@@ -311,7 +377,7 @@
 
       <article class="card">
         <div class="thumb">
-          <img src="images/ScribbleArt.jpg" alt="Scribble art output" onerror="this.style.display='none'">
+          <img src="images/ScribbleArt.jpg" alt="Scribble art output" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
         <div class="row">
           <span class="num">06</span>
@@ -326,10 +392,11 @@
 
       <article class="card">
         <div class="thumb">
-          <iframe src="https://www.youtube.com/embed/izYpfbotgKU"
+          <iframe src="https://www.youtube.com/embed/izYpfbotgKU?playsinline=1&rel=0"
             title="Movie Analysis: Sunshine"
+            loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowfullscreen></iframe>
         </div>
         <div class="row">
@@ -345,10 +412,11 @@
 
       <article class="card">
         <div class="thumb tall">
-          <iframe src="https://www.youtube.com/embed/JZLXogUNfic"
+          <iframe src="https://www.youtube.com/embed/JZLXogUNfic?playsinline=1&rel=0"
             title="Multimedia Video"
+            loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowfullscreen></iframe>
         </div>
         <div class="row">
@@ -381,7 +449,7 @@
     <article class="work">
       <div class="media">
         <div class="thumb">
-          <img src="images/Drawing.jpg" alt="Drawing artwork" onerror="this.style.display='none'">
+          <img src="images/Drawing.jpg" alt="Drawing artwork" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
       </div>
       <div>
@@ -398,10 +466,11 @@
     <article class="work">
       <div class="media">
         <div class="video short">
-          <iframe src="https://www.youtube.com/embed/hfaBSIkUuPY"
+          <iframe src="https://www.youtube.com/embed/hfaBSIkUuPY?playsinline=1&rel=0"
             title="Dance video"
+            loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowfullscreen></iframe>
         </div>
       </div>
@@ -419,7 +488,7 @@
     <article class="work">
       <div class="media">
         <div class="thumb">
-          <img src="images/Photography.jpg" alt="Photography work" onerror="this.style.display='none'">
+          <img src="images/Photography.jpg" alt="Photography work" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
       </div>
       <div>
@@ -471,7 +540,7 @@
       <h3><span>Appendix 1</span> · First Lines</h3>
       <div class="proof">
         <figure>
-          <img src="images/DrawingProof.jpg" alt="Drawing process photo" onerror="this.style.display='none'">
+          <img src="images/DrawingProof.jpg" alt="Drawing process photo" loading="lazy" decoding="async" onerror="this.style.display='none'">
           <figcaption>Drawing in progress</figcaption>
         </figure>
       </div>
@@ -490,7 +559,7 @@
       <h3><span>Appendix 3</span> · Seeing Through the Lens</h3>
       <div class="proof">
         <figure>
-          <img src="images/PhotographyProof.jpg" alt="Photography process photo" onerror="this.style.display='none'">
+          <img src="images/PhotographyProof.jpg" alt="Photography process photo" loading="lazy" decoding="async" onerror="this.style.display='none'">
           <figcaption>Photography process</figcaption>
         </figure>
       </div>
@@ -517,7 +586,7 @@
 
 <!-- ============ IMAGE VIEWER ============ -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-  <button class="lb-close" id="lbClose" aria-label="Close image">&times;</button>
+  <button class="lb-close" id="lbClose" aria-label="Close image" type="button">&times;</button>
   <img id="lbImg" src="" alt="">
   <p class="lb-cap" id="lbCap"></p>
 </div>
@@ -546,7 +615,7 @@
     box.classList.remove('open');
     document.body.style.overflow='';
     big.src='';
-    if(lastFocus){lastFocus.focus();}
+    if(lastFocus&&lastFocus.focus){lastFocus.focus();}
   }
 
   document.querySelectorAll('.card .thumb img,.media .thumb img,.proof img').forEach(function(img){
